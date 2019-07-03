@@ -25,7 +25,7 @@ class Proxies(object):
         page = random.randint(1,10)
         page_stop = page + self.page
         while page < page_stop:
-            url = 'http://www.xicidaili.com/nt/%d' % page
+            url = 'https://www.xicidaili.com/nt/%d' % page
             html = requests.get(url, headers=self.headers).content
             soup = BeautifulSoup(html, 'lxml')
             ip_list = soup.find(id='ip_list')
@@ -38,7 +38,7 @@ class Proxies(object):
         page = random.randint(1,10)
         page_stop = page + self.page
         while page < page_stop:
-            url = 'http://www.xicidaili.com/nn/%d' % page
+            url = 'https://www.xicidaili.com/nn/%d' % page
             html = requests.get(url, headers=self.headers).content
             soup = BeautifulSoup(html, 'lxml')
             ip_list = soup.find(id='ip_list')
@@ -80,7 +80,7 @@ class Proxies(object):
             protocol = 'https' if 'https' in proxy else 'http'
             proxies = {protocol: proxy}
             try:
-                if requests.get('http://www.baidu.com', proxies=proxies, timeout=2).status_code == 200:
+                if requests.get('https://www.baidu.com', proxies=proxies, timeout=2).status_code == 200:
                     print 'success %s' % proxy
                     new_queue.put(proxy)
             except:
